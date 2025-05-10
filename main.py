@@ -8,8 +8,11 @@ from random import sample as s
 from time import time as t
 
 def four_code_gen ()-> int:
-    print(f"Hi, there!\nI've generated a random 4 digit number for you.\nLet's play a bulls and cows game.")
-    return int("".join(s("123456789", 4)))
+   print(f"Hi, there!\nI've generated a random 4 digit number for you.\nLet's play a bulls and cows game.")
+   first_digit = s("123456789", 1)[0]  
+   other_digits = s([n for n in "0123456789" if n not in first_digit],3)
+   return int(first_digit + "".join(other_digits))
+
 
 def choose_number () -> int:
     while True:
