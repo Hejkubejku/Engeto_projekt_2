@@ -14,15 +14,16 @@ def four_code_gen ()-> int:
    return int(first_digit + "".join(other_digits))
 
 
-def choose_number () -> int:
+def choose_number() -> int:
     while True:
-        try:
-            number = int(input("Enter 4-digit number, no repeats, no zero first: "))
-            if len(str(number)) != 4 or len(set(str(number))) != 4:
-                continue
-            return number
-        except ValueError:
-            print("Invalid input, please enter a 4-digit number with no repeats.")
+        number = input("Enter 4-digit number, no repeats, no zero first: ")
+        if not number.isdigit():
+            print("Invalid input, please enter digits only.")
+            continue
+        if len(number) != 4 or len(set(number)) != 4 or number[0] == "0":
+            print("Invalid format, try again.")
+            continue
+        return int(number)  
 
 
 def compare_numbers (number: int, guess: int) -> tuple:
